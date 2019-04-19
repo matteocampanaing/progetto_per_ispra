@@ -1,0 +1,53 @@
+{% extends 'blog/base.html' %}
+
+{% block content %}
+<div class="table-responsive-lg">
+    <table class="table table-striped">
+            <thead>
+                <tr>
+                        <td>genere</td>
+                        <td>specie</td>
+                        <td>autore</td>
+                        <td>var_f</td>
+                        <td>autore_var</td>
+                        <td>data_verifica</td>
+                        <td>comune_provincia</td>
+                        <td>localita</td>
+                        <td>Altezza_slm</td>
+                        <td>data</td>
+                        <td>principali_specie_vegetali</td>
+                        <td>note</td>
+                        <td>tipologia_di_terreno</td>
+                        <td>raccolto_da_legit</td>
+                        <td>determinato_da_determinavit</td>
+                        <td>indicazione_cartografica_igm</td>
+
+                </tr>
+            </thead>
+        {% for fungo in fungos %}
+            <div class="post">
+                <tr>
+                    <td>{{fungo.genere}}</td>
+                    <td>{{fungo.specie}}</td>
+                    <td>{{fungo.autore}}</td>
+                    <td>{{fungo.var_f}}</td>
+                    <td>{{fungo.autore_var}}</td>
+                    <td>{{fungo.data_verifica}}</td>
+                    <td>{{fungo.comune_provincia}}</td>
+                    <td>{{fungo.localita}}</td>
+                    <td>{{fungo.Altezza_slm}}</td>
+                    <td>{{fungo.data}}</td>
+                    <td>{{fungo.principali_specie_vegetali}}</td>
+                    <td>{{fungo.note}}</td>
+                    <td>{{fungo.tipologia_di_terreno}}</td>
+                    <td>{{fungo.raccolto_da_legit}}</td>
+                    <td>{{fungo.determinato_da_determinavit}}</td>
+                    <td>{{fungo.indicazione_cartografica_igm}}</td>
+
+                </tr>
+            </div>
+        {% endfor %}
+    </table>
+</div>
+{% endblock %}
+

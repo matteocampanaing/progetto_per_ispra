@@ -1,7 +1,7 @@
 from django.shortcuts import render, get_object_or_404 ,redirect
 from django.utils import timezone
-from .models import Post , Comment
-from .forms import PostForm , CommentForm
+from .models import Post , Comment , Fungo
+from .forms import PostForm , CommentForm , FungoForm
 from django.contrib.auth.decorators import login_required
 
 def post_list(request):
@@ -90,3 +90,44 @@ def comment_remove(request, pk):
     comment = get_object_or_404(Comment, pk=pk)
     comment.delete()
     return redirect('post_detail', pk=comment.post.pk)
+
+
+
+
+
+#############################################################################################
+
+def fungo_list(request):
+    fungos = Fungo.objects.filter().order_by('genere')
+    return render(request, 'blog/fungo_list.html', {'fungos': fungos})
+
+
+def fungo_new(request):
+    if request.method == "POST":
+        form = FungoForm(request.POST)
+        if form.is_valid():
+            fungo = form.save(commit=False)
+            fungo.save()
+            return redirect('fungo_list')
+    else:
+        form = FungoForm()
+    return render(request, 'blog/fungo_edit.html', {'form': form})
+
+
+def fungo_edit(request, pk):
+    fungo = get_object_or_404(Fungo, pk=pk)
+    if request.method == "POST":
+        form = FungoForm(request.POST, instance=post)
+        if form.is_valid():
+            fungo = form.save(commit=False)
+            fungo.save()
+            return redirect('fungo_list')
+    else:
+        form = FungoForm(instance=post)
+    return render(request, 'blog/fungo_edit.html', {'form': form})
+
+
+def fungo_remove(request, pk):
+    fungo = get_object_or_404(Fungo, pk=pk)
+    fungo.delete()
+    return redirect('fungo_list')
