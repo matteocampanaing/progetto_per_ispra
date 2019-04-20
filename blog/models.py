@@ -2,6 +2,7 @@ from django.db import models
 from django.conf import settings
 from django.utils import timezone
 
+
 # Create your models here.
 
 
@@ -39,6 +40,9 @@ class Comment(models.Model):
 
 class Fungo(models.Model):
 
+    id = models.AutoField(primary_key=True)
+    #id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    
     genere = models.CharField(max_length=200)
     specie = models.CharField(max_length=200)
     autore = models.CharField(max_length=200)

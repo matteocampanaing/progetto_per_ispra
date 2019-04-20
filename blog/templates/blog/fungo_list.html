@@ -3,7 +3,7 @@
 {% block content %}
 <div class="table-responsive-lg">
     <table class="table table-striped">
-            <thead>
+            <thead class="thead-dark">
                 <tr>
                         <td>genere</td>
                         <td>specie</td>
@@ -21,6 +21,7 @@
                         <td>raccolto_da_legit</td>
                         <td>determinato_da_determinavit</td>
                         <td>indicazione_cartografica_igm</td>
+                        <td></td>
 
                 </tr>
             </thead>
@@ -43,7 +44,8 @@
                     <td>{{fungo.raccolto_da_legit}}</td>
                     <td>{{fungo.determinato_da_determinavit}}</td>
                     <td>{{fungo.indicazione_cartografica_igm}}</td>
-
+                    <td><a href="{% url 'fungo_edit' pk=fungo.pk %}"><span class="glyphicon glyphicon-edit"></span></a></td>
+                    <td><a href="{% url 'post_remove' pk=fungo.pk %}"><span class="glyphicon glyphicon-remove"></span></a></td>
                 </tr>
             </div>
         {% endfor %}
