@@ -2,26 +2,27 @@
 
 {% block content %}
 <div class="table-responsive-lg">
-    <table class="table table-striped">
+    <table class="table table-striped table-bordered table-dark">
             <thead class="thead-dark">
-                <tr>
-                        <td>genere</td>
-                        <td>specie</td>
-                        <td>autore</td>
-                        <td>var_f</td>
-                        <td>autore_var</td>
-                        <td>data_verifica</td>
-                        <td>comune_provincia</td>
-                        <td>localita</td>
-                        <td>Altezza_slm</td>
-                        <td>data</td>
-                        <td>principali_specie_vegetali</td>
-                        <td>note</td>
-                        <td>tipologia_di_terreno</td>
-                        <td>raccolto_da_legit</td>
-                        <td>determinato_da_determinavit</td>
-                        <td>indicazione_cartografica_igm</td>
-                        <td></td>
+                <tr class="table-dark">
+                        <th scope="col">genere</th>
+                        <th scope="col">specie</th>
+                        <th scope="col">autore</th>
+                        <th scope="col">var_f</th>
+                        <th scope="col">autore_var</th>
+                        <th scope="col">data_verifica</th>
+                        <th scope="col">comune_provincia</th>
+                        <th scope="col">localita</th>
+                        <th scope="col">Altezza_slm</th>
+                        <th scope="col">data</th>
+                        <th scope="col">principali_specie_vegetali</th>
+                        <th scope="col">note</th>
+                        <th scope="col">tipologia_di_terreno</th>
+                        <th scope="col">raccolto_da_legit</th>
+                        <th scope="col">determinato_da_determinavit</th>
+                        <th scope="col">indicazione_cartografica_igm</th>
+                        <th scope="col"></th>
+                        <th scope="col"></th>
 
                 </tr>
             </thead>
@@ -45,7 +46,7 @@
                     <td>{{fungo.determinato_da_determinavit}}</td>
                     <td>{{fungo.indicazione_cartografica_igm}}</td>
                     <td><a href="{% url 'fungo_edit' pk=fungo.pk %}"><span class="glyphicon glyphicon-edit"></span></a></td>
-                    <td><a href="{% url 'post_remove' pk=fungo.pk %}"><span class="glyphicon glyphicon-remove"></span></a></td>
+                    <td><a href="{% url 'fungo_remove' pk=fungo.pk %}"><span class="glyphicon glyphicon-remove"></span></a></td>
                 </tr>
             </div>
         {% endfor %}

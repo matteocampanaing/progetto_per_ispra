@@ -19,6 +19,6 @@ urlpatterns = [
     path('', views.fungo_list, name='fungo_list'),
     path('fungo/new/', views.fungo_new, name='fungo_new'),
     path('fungo/<int:pk>/edit/', views.fungo_edit, name='fungo_edit'),
-    path('post/<int:pk>/remove/', views.post_remove, name='fungo_remove'),
+    path('fungo/<int:pk>/remove/', views.fungo_remove, name='fungo_remove'),
     
 ]
