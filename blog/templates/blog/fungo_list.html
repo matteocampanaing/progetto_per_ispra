@@ -1,15 +1,23 @@
 {% extends 'blog/base.html' %}
 
 {% block content %}
-<div class="table-responsive-lg">
-    <table class="table table-striped table-bordered table-dark">
+
+<div id="fungo-div-id" class="table-responsive-lg">
+    <table id=" fungo-table-id "class="table table-striped table-bordered table-dark">
             <thead class="thead-dark">
                 <tr class="table-dark">
-                        <th scope="col">genere</th>
-                        <th scope="col">specie</th>
-                        <th scope="col">autore</th>
-                        <th scope="col">var_f</th>
-                        <th scope="col">autore_var</th>
+                        <th scope="col">specie_genere</th>
+                        <th scope="col">specie_specie</th>
+                        <th scope="col">specie_autore</th>
+                        <th scope="col">specie_var_f</th>
+                        <th scope="col">specie_autore_var</th>
+
+                        <th scope="col">current_name_di_index_fungorum_genere</th>
+                        <th scope="col">current_name_di_index_fungorum_specie</th>
+                        <th scope="col">current_name_di_index_fungorum_autore</th>
+                        <th scope="col">current_name_di_index_fungorum_var_f</th>
+                        <th scope="col">current_name_di_index_fungorum_autore_var</th>
+
                         <th scope="col">data_verifica</th>
                         <th scope="col">comune_provincia</th>
                         <th scope="col">localita</th>
@@ -29,24 +37,40 @@
         {% for fungo in fungos %}
             <div class="post">
                 <tr>
-                    <td>{{fungo.genere}}</td>
-                    <td>{{fungo.specie}}</td>
-                    <td>{{fungo.autore}}</td>
-                    <td>{{fungo.var_f}}</td>
-                    <td>{{fungo.autore_var}}</td>
+
+                    
+                    <td>{{fungo.specie_genere}}</td>
+                    <td>{{fungo.specie_specie}}</td>
+                    <td>{{fungo.specie_autore}}</td>
+                    <td>{{fungo.specie_var_f}}</td>
+                    <td>{{fungo.specie_autore_var}}</td>
+
+                    <td>{{fungo.current_name_di_index_fungorum_genere}}</td>
+                    <td>{{fungo.current_name_di_index_fungorum_specie}}</td>
+                    <td>{{fungo.current_name_di_index_fungorum_autore}}</td>
+                    <td>{{fungo.current_name_di_index_fungorum_var_f}}</td>
+                    <td>{{fungo.current_name_di_index_fungorum_autore_var}}</td>
+
                     <td>{{fungo.data_verifica}}</td>
                     <td>{{fungo.comune_provincia}}</td>
                     <td>{{fungo.localita}}</td>
                     <td>{{fungo.Altezza_slm}}</td>
                     <td>{{fungo.data}}</td>
+
                     <td>{{fungo.principali_specie_vegetali}}</td>
                     <td>{{fungo.note}}</td>
                     <td>{{fungo.tipologia_di_terreno}}</td>
+                    
                     <td>{{fungo.raccolto_da_legit}}</td>
                     <td>{{fungo.determinato_da_determinavit}}</td>
                     <td>{{fungo.indicazione_cartografica_igm}}</td>
+
+
+                    
                     <td><a href="{% url 'fungo_edit' pk=fungo.pk %}"><span class="glyphicon glyphicon-edit"></span></a></td>
                     <td><a href="{% url 'fungo_remove' pk=fungo.pk %}"><span class="glyphicon glyphicon-remove"></span></a></td>
+
+                
                 </tr>
             </div>
         {% endfor %}

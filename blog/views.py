@@ -1,9 +1,9 @@
 from django.shortcuts import render, get_object_or_404 ,redirect
 from django.utils import timezone
-from .models import Post , Comment , Fungo
-from .forms import PostForm , CommentForm , FungoForm
+from .models import Post , Comment , Fungo , CsvFile
+from .forms import PostForm , CommentForm , FungoForm , CsvFileForm
 from django.contrib.auth.decorators import login_required
-import uuid
+
 
 def post_list(request):
     posts = Post.objects.filter(published_date__lte=timezone.now()).order_by('published_date')
@@ -99,7 +99,7 @@ def comment_remove(request, pk):
 #############################################################################################
 
 def fungo_list(request):
-    fungos = Fungo.objects.filter().order_by('genere')
+    fungos = Fungo.objects.filter().order_by('specie_genere')
     return render(request, 'blog/fungo_list.html', {'fungos': fungos})
 
 
@@ -139,3 +139,33 @@ def fungo_edit(request, pk):
 def fungo_detail(request, pk):
     fungo = get_object_or_404(Fungo, pk=pk)
     return render(request, 'blog/fungo_detail.html', {'post': post})
+
+
+##############################################################################
+
+####################        CSV Uploader
+
+
+def csv_file_new(request):
+    if request.method == "POST":
+        form = CsvFileForm(request.POST)
+        if form.is_valid():
+            csv_file = form.save(commit=False)
+            csv_file.save()
+            return redirect('fungo_list')
+    else:
+        form = CsvFileForm()
+    return render(request, 'blog/csv_file_edit.html', {'form': form})
+
+
+def csv_file_edit(request, pk):
+    csv_file = get_object_or_404(CsvFile, pk=pk)
+    if request.method == "POST":
+        form = CsvFileForm(request.POST, instance=csv_file)
+        if form.is_valid():
+            csv_file = form.save(commit=False)
+            csv_file.save()
+            return redirect('fungo_list' )
+    else:
+        form = CsvFileForm(instance=csv_file)
+    return render(request, 'blog/csv_file_edit.html', {'form': form})
